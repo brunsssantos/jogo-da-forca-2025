@@ -5,17 +5,51 @@
         static void Main(string[] args)
         {
 
+             string[] frutas = [
+                "ABACATE",
+                "ABACAXI",
+                "ACEROLA",
+                "ACAI",
+                "ARACA",
+                "BACABA",
+                "BACURI",
+                "BANANA",
+                "CAJA",
+                "CAJU",
+                "CARAMBOLA",
+                "CUPUACU",
+                "GRAVIOLA",
+                "GOIABA",
+                "JABUTICABA",
+                "JENIPAPO",
+                "MACA",
+                "MANGABA",
+                "MANGA",
+                "MARACUJA",
+                "MURICI",
+                "PEQUI",
+                "PITANGA",
+                "PITAYA",
+                "SAPOTI",
+                "TANGERINA",
+                "UMBU",
+                "UVA",
+                "UVAIA"
+            ];
+
             while (true)
             {
-                string palavraSecreta = "MELANCIA";
+                Random geradorDeNumeros = new Random();
+
+                int indicePalavraEscolhida = geradorDeNumeros.Next(frutas.Length);
+
+                string palavraSecreta = frutas[indicePalavraEscolhida];
 
                 char[] letrasEncontradas = new char[palavraSecreta.Length];
 
                 for (int caractere = 0; caractere < letrasEncontradas.Length; caractere++)
-                {
                     //acessar o array no indice 0
                     letrasEncontradas[caractere] = '_';
-                }
 
 
                 int quantidadeErros = 0;
@@ -121,7 +155,7 @@
 
                     Console.Write("Digite uma letra: ");
 
-                    char chute = Console.ReadLine()[0]; //obtém apenas  caractere do que o usuário digita
+                    char chute = Console.ReadLine()!.ToUpper()[0]; //obtém apenas  caractere do que o usuário digita
 
                     bool letraFoiEncontrada = false;
 
@@ -142,13 +176,13 @@
 
                     dicadaPalavra = String.Join(" ", letrasEncontradas);
 
-                    jogadorAcertou = dicadaPalavra == palavraSecreta; // true
+                    jogadorAcertou = dicadaPalavra.Replace(" ", "") == palavraSecreta;
                     jogadorEnforcou = quantidadeErros > 5;
 
                     if (jogadorAcertou)
                     {
                         Console.WriteLine("--------------------------------------");
-                        Console.WriteLine("Você acertou a plavra secreta! Era: " + palavraSecreta);
+                        Console.WriteLine("Você acertou a palavra secreta! Era: " + palavraSecreta);
                         Console.WriteLine("--------------------------------------");
                     }
 
@@ -161,8 +195,8 @@
                         Console.WriteLine(" ___________        ");
                         Console.WriteLine(" |/        |        ");
                         Console.WriteLine(" |         O        ");
-                        Console.WriteLine(" |        /x\\      ");
-                        Console.WriteLine(" |         x        ");
+                        Console.WriteLine(" |        /|\\      ");
+                        Console.WriteLine(" |         |        ");
                         Console.WriteLine(" |        / \\      ");
                         Console.WriteLine(" |        ---       ");
                         Console.WriteLine(" |                  ");
